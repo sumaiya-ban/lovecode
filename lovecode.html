@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Favorite Person Rafi ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#ffd1ff);
+    font-family:'Arial',sans-serif;
+    overflow:hidden;
+}
+
+.card{
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    text-align:center;
+    width:380px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+    color:#ff4d6d;
+}
+
+#question{
+    font-size:22px;
+    margin:20px 0;
+    color:#444;
+    min-height:60px;
+}
+
+button{
+    padding:12px 22px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    cursor:pointer;
+    margin:10px;
+    transition:0.3s;
+}
+
+#startBtn{
+    background:#ff4d6d;
+    color:white;
+}
+
+#yesBtn{
+    background:#ff4d6d;
+    color:white;
+}
+
+#noBtn{
+    background:#777;
+    color:white;
+    position:relative;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+#message{
+    margin-top:20px;
+    color:#ff4d6d;
+    font-size:20px;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Hey Groot ❤️</h1>
+
+    <div id="question">
+        How are you today? 
+    </div>
+
+    <button id="startBtn">এইতো 🥰</button>
+
+    <button id="yesBtn" style="display:none;">Yes ❤️</button>
+    <button id="noBtn" style="display:none;">No 😏</button>
+
+    <div id="message"></div>
+</div>
+
+<script>
+
+const questions = [
+    "Are you smiling right now? 😊",
+    "Did you miss me today? ❤️",
+    "Do I make your day a little better? 🥰",
+    "Will you let me spoil you with love? 💕",
+    "Do you know you're special to me? 🌹",
+    "Can I have a hug? 🤗",
+    "Will you think about me before sleeping tonight? 🌙",
+    "Do you like me a little bit more than yesterday? ❤️"
+];
+
+let current = 0;
+
+const questionText = document.getElementById("question");
+const startBtn = document.getElementById("startBtn");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("message");
+
+startBtn.addEventListener("click", () => {
+    questionText.innerHTML = questions[0];
+    startBtn.style.display = "none";
+    yesBtn.style.display = "inline-block";
+    noBtn.style.display = "inline-block";
+});
+
+yesBtn.addEventListener("click", () => {
+
+    current++;
+
+    if(current < questions.length){
+        questionText.innerHTML = questions[current];
+    }else{
+       questionText.innerHTML = "One Last Thing ❤️";
+
+message.innerHTML = `
+<img src="wall-e.jpg.avif" style="
+width:260px;
+border-radius:20px;
+margin-top:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+"><br><br>
+
+💡 Just like WALL-E never stopped looking at EVE with wonder,
+I never stop caring about you.
+
+No matter how busy the day gets,
+you always find a way into my thoughts. ❤️
+
+Thank you for being part of my life.
+🌙✨
+`;
+    }
+});
+
+function moveButton(){
+
+    const x = Math.random()*250 - 125;
+    const y = Math.random()*150 - 75;
+
+    noBtn.style.transform =
+    `translate(${x}px, ${y}px)`;
+}
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("click", moveButton);
+
+</script>
+
+</body>
+</html>
